@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SimpleQuiz</string>
+
+    <string name="result">결과</string>
+    <string name="back_to_home">돌아가기</string>
+    <string name="answer">정답</string>
+
+    <string name="num_one">1</string>
+    <string name="num_two">2</string>
+    <string name="num_three">3</string>
+    <string name="str_level">level</string>
+
+    <string name="str_select_output">다음 코드의 실행 결과로 알맞은 것을 고르세요</string>
+    <string name="str_select_error_point">다음 코드에서 문제가 발생하는 부분을 고르세요</string>
+    <string name="str_select_algorithm">다음 코드가 구현하고자 하는 알고리즘을 고르세요</string>
+
+    <string name="quiz_num">Quiz %d</string>
+
+</resources>
