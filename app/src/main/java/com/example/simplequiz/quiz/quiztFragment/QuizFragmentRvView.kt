@@ -1,5 +1,5 @@
 package com.example.simplequiz.quiz.quiztFragment
 
-interface QuizFragmentView {
+interface QuizFragmentRvView {
     fun gradeQuiz(answer : Int)
 }

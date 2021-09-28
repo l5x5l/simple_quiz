@@ -1,6 +1,6 @@
 package com.example.simplequiz.quiz
 
-interface QuizActivityView {
+interface QuizActivityRvView {
     fun isFirst(idx : Int) : Boolean
 
     fun isLast(idx : Int) : Boolean
