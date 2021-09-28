@@ -8,11 +8,11 @@ import com.example.simplequiz.R
 import com.example.simplequiz.config.BaseFragment
 import com.example.simplequiz.databinding.FragmentQuizBinding
 import com.example.simplequiz.quiz.QuizActivity
-import com.example.simplequiz.quiz.QuizActivityView
+import com.example.simplequiz.quiz.QuizActivityRvView
 import com.example.simplequiz.quiz.quiztFragment.adapter.RvQuizAnswerAdapter
 import com.example.simplequiz.quiz.data.Quiz
 
-class QuizFragment(private val quiz : Quiz, private val view : QuizActivityView) : BaseFragment<FragmentQuizBinding>(FragmentQuizBinding::bind, R.layout.fragment_quiz), QuizFragmentView{
+class QuizFragment(private val quiz : Quiz, private val view : QuizActivityRvView) : BaseFragment<FragmentQuizBinding>(FragmentQuizBinding::bind, R.layout.fragment_quiz), QuizFragmentRvView{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

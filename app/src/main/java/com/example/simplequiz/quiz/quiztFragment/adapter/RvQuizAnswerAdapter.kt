@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simplequiz.databinding.ItemQuizAnswerBinding
-import com.example.simplequiz.quiz.QuizActivity
-import com.example.simplequiz.quiz.quiztFragment.QuizFragmentView
+import com.example.simplequiz.quiz.quiztFragment.QuizFragmentRvView
 
-class RvQuizAnswerAdapter(private val context : Context, private val answerList : ArrayList<String>, private val view : QuizFragmentView) : RecyclerView.Adapter<RvQuizAnswerAdapter.ViewHolder>(){
+class RvQuizAnswerAdapter(private val context : Context, private val answerList : ArrayList<String>, private val view : QuizFragmentRvView) : RecyclerView.Adapter<RvQuizAnswerAdapter.ViewHolder>(){
 
     private val inflate = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     private lateinit var binding : ItemQuizAnswerBinding
