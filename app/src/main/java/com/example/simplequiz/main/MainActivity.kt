@@ -13,10 +13,10 @@ import com.example.simplequiz.main.adapter.RvQuizLevelAdapter
 import com.example.simplequiz.main.decoration.RvQuizLevelDecoration
 import com.example.simplequiz.quiz.QuizActivity
 
-class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), MainActivityRvView{
-    private val model = MainActivityModel()
-    lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate),MainContract.View{
 
+    lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
+    val presenter = MainPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,32 +25,33 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             result : ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK){
                 val intent = result.data!!
-                val tempSolved = intent.getBooleanExtra("result", false)
-                val tempQuizIdx = intent.getIntExtra("quizNum", 0)
-                if (tempSolved) model.solve(tempQuizIdx + 1)
-                applyData()
+                presenter.showQuizState(intent)
             }
         }
 
         setRecyclerView()
-        applyData()
+        presenter.takeView(this)
+        presenter.showQuizState(null)
     }
 
-    private fun applyData() {
-        (binding.rv.adapter as RvQuizLevelAdapter).applyData(model.getReady(), model.getSolved())
+    override fun onDestroy() {
+        presenter.dropView()
+        super.onDestroy()
+    }
+
+    override fun applyData(ready : ArrayList<Boolean>, solved : ArrayList<Boolean>) {
+        (binding.rv.adapter as RvQuizLevelAdapter).applyData(ready, solved)
     }
 
     private fun setRecyclerView(){
         binding.rv.layoutManager = GridLayoutManager(this, 2)
-        binding.rv.adapter = RvQuizLevelAdapter(this, this)
+        binding.rv.adapter = RvQuizLevelAdapter(this)
         binding.rv.addItemDecoration(RvQuizLevelDecoration(this))
     }
 
     override fun goToQuiz(quizNum: Int) {
-        if (model.isAvailable(quizNum)){
-            val intent = Intent(this, QuizActivity::class.java)
-            activityResultLauncher.launch(intent)
-        }
+        val intent = Intent(this, QuizActivity::class.java)
+        activityResultLauncher.launch(intent)
     }
 
     override fun goToHome() {

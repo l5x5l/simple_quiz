@@ -60,6 +60,6 @@ class QuizFragment(private val quiz : Quiz, private val view : QuizActivityRvVie
     }
 
     override fun gradeQuiz(answer: Int) {
-        (activity as QuizActivity).model.gradeQuiz(quiz.questionIdx, answer)
+        (activity as QuizActivity).presenter.gradeQuiz(quiz.questionIdx, answer)
     }
 }

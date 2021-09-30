@@ -12,7 +12,7 @@ class RvQuizCountAdapter(private val context : Context, quizCount : Int ?= null)
 
     private lateinit var binding : ItemQuizCountBinding
     private val inflate = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    private val quizCount = quizCount ?: 0
+    private var quizCount = quizCount ?: 0
     private var quizPosition = 0
 
     class ViewHolder(binding : ItemQuizCountBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -41,5 +41,9 @@ class RvQuizCountAdapter(private val context : Context, quizCount : Int ?= null)
     fun changeTo(idx : Int){
         quizPosition = idx
         notifyDataSetChanged()
+    }
+
+    fun changeCount(count : Int){
+        quizCount = count
     }
 }

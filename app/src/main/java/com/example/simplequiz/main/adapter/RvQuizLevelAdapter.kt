@@ -9,9 +9,10 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simplequiz.R
 import com.example.simplequiz.databinding.ItemQuizLevelBinding
-import com.example.simplequiz.main.MainActivityRvView
+import com.example.simplequiz.main.MainActivity
+import com.example.simplequiz.main.MainContract
 
-class RvQuizLevelAdapter(private val context : Context, private val view : MainActivityRvView) : RecyclerView.Adapter<RvQuizLevelAdapter.ViewHolder>() {
+class RvQuizLevelAdapter(private val context : Context) : RecyclerView.Adapter<RvQuizLevelAdapter.ViewHolder>() {
 
     private lateinit var binding : ItemQuizLevelBinding
     private val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -33,7 +34,7 @@ class RvQuizLevelAdapter(private val context : Context, private val view : MainA
         if (position < dataList.size){
             holder.levelText.text = (position + 1).toString()
             holder.mainLayout.setOnClickListener {
-                view.goToQuiz((position + 1))
+                (context as MainActivity).presenter.checkQuiz((position + 1))
             }
 
             when(dataList[position]) {
@@ -58,7 +59,7 @@ class RvQuizLevelAdapter(private val context : Context, private val view : MainA
             holder.levelText.text = "X"
             holder.text.visibility = View.GONE
             holder.mainLayout.setOnClickListener{
-                view.goToHome()
+                (context as MainActivity).goToHome()
             }
         }
     }
