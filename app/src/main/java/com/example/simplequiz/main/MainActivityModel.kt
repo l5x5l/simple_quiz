@@ -9,6 +9,7 @@ class MainActivityModel {
     fun clear(){
         isReady.clear()
         isReady.addAll(clearList)
+        isReady[0] = true
         isSolved.clear()
         isSolved.addAll(clearList)
     }
@@ -32,5 +33,19 @@ class MainActivityModel {
 
     fun isAvailable(questNum : Int) : Boolean {
         return (questNum <= isReady.size && questNum > 0 && isReady[questNum - 1])
+    }
+
+    fun getState() : ArrayList<Int>{
+        val tempDataList = arrayListOf<Int>()
+        for (idx in 0 until isSolved.size){
+            if (isReady[idx] && isSolved[idx]){
+                tempDataList.add(2)
+            } else if (isReady[idx] && !isSolved[idx]) {
+                tempDataList.add(1)
+            } else {
+                tempDataList.add(0)
+            }
+        }
+        return tempDataList
     }
 }

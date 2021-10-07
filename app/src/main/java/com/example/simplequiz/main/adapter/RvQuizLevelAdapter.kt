@@ -65,6 +65,12 @@ class RvQuizLevelAdapter(private val context : Context, private val view : MainA
 
     override fun getItemCount(): Int = dataList.size + 1
 
+    fun applyData2(stateList : ArrayList<Int>){
+        dataList.clear()
+        dataList.addAll(stateList)
+        notifyDataSetChanged()
+    }
+
     fun applyData(isReady : ArrayList<Boolean>, isSolve : ArrayList<Boolean>){
         for (idx in 0 until isReady.size) {
             if (isReady[idx] && isSolve[idx]){

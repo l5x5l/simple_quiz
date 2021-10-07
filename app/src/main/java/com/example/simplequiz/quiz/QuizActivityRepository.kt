@@ -2,7 +2,7 @@ package com.example.simplequiz.quiz
 
 import com.example.simplequiz.quiz.data.Quiz
 
-class QuizActivityModel {
+class QuizActivityRepository {
 
     private val quiz1 = Quiz(0, 1, 1, arrayListOf("10", "45", "55", "런타임 에러", "컴파일 에러"), "sum=0\nfor i in range(0, 10) :\n\tsum+=1\nprint(sum)")
     private val quiz2 = Quiz(1, 2, 5,
@@ -16,6 +16,10 @@ class QuizActivityModel {
         for (i in 0 until quizList.size) {
             gradeList.add(false)
         }
+    }
+
+    fun getQuizAll() : ArrayList<Quiz>{
+        return quizList
     }
 
     fun getQuiz(quizIdx : Int) : Quiz{
